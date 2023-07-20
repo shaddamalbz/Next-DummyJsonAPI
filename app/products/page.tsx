@@ -4,10 +4,12 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Product } from '@/lib/types'
+import { SelectCategories } from './components'
 
 export default function Page() {
   const [listProduct, setListProduct] = useState<Product[] | undefined>()
   const [search, setSearch] = useState<string>()
+  const [category, setCategory] = useState<string>()
   const deferredSearch = useDeferredValue(search)
 
   // pagination state
@@ -15,10 +17,22 @@ export default function Page() {
   const [skip, setSkip] = useState(0)
   const limit = useRef(10)
 
-  async function getProduct({ skip, limit, search }: { skip: number; limit: number; search?: string }) {
+  async function getProduct({
+    skip,
+    limit,
+    search,
+    category,
+  }: {
+    skip: number
+    limit: number
+    search?: string
+    category?: string
+  }) {
     let url = 'https://dummyjson.com/products'
     if (search) {
       url += `/search?q=${search}&skip=${skip}&limit=${limit}`
+    } else if (category) {
+      url += `/category/${category}?skip=${skip}&limit=${limit}`
     } else {
       url += `?skip=${skip}&limit=${limit}`
     }
@@ -47,13 +61,38 @@ export default function Page() {
     setSkip(currentSkip - limit.current)
   }
 
-  const currentPage = skip > limit.current ? skip / limit.current : 1
+  const currentPage = skip >= limit.current ? skip / limit.current + 1 : 1
   const totalPage = total && total / limit.current - 1
 
   return (
     <div className="p-6 space-y-4">
-      <div className="w-fit ml-auto">
-        <Input type="text" placeholder="Search Product" onChange={(e) => setSearch(e.target.value)} />
+      <div className="flex items-center justify-between gap-4">
+        <Input
+          className="w-[300px]"
+          type="text"
+          placeholder="Search Product"
+          onChange={(e) => setSearch(e.target.value)}
+        />
+        <div className="flex gap-4">
+          <SelectCategories onChange={(value) => setCategory(value)} />
+          <Button
+            variant="secondary"
+            onClick={() => {
+              getProduct({ skip: skip, limit: limit.current }).then((res) => setListProduct(res.products))
+            }}
+          >
+            Clear filter
+          </Button>
+          <Button
+            onClick={() => {
+              getProduct({ skip: skip, limit: limit.current, category: category }).then((res) =>
+                setListProduct(res.products)
+              )
+            }}
+          >
+            Filter
+          </Button>
+        </div>
       </div>
 
       <Table>
