@@ -4,7 +4,6 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 
 import dummyProduct from '@/lib/dummyProduct.json'
 import { Product } from '@/lib/types'
-import _ from 'underscore'
 import SelectBrands from './components/SelectBrand'
 import { Button } from '@/components/ui/button'
 
