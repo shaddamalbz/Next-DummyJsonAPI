@@ -13,7 +13,6 @@ export default function Page() {
   const [selectedBrands, setSelectedBrands] = useState<string>()
   const [startPrice, setStartPrice] = useState<number>()
   const [endPrice, setEndPrice] = useState<number>()
-  const [data, setData] = useState()
 
   const filteredData = useMemo(() => {
     products
@@ -28,12 +27,22 @@ export default function Page() {
   }, [selectedBrands, products, startPrice, endPrice])
 
   return (
-    <div className="p-6 space-y-4">
-      <div className="flex items-center justify-end gap-4">
+    <div className="w-full p-6 space-y-4">
+      <div className="space-y-4 block lg:flex items-center justify-end gap-4">
         <div className="flex gap-4 items-center">
-          <Input type="number" placeholder="start price" onChange={(e) => setStartPrice(+e.target.value)} />
+          <Input
+            className="w-[300px]"
+            type="number"
+            placeholder="start price"
+            onChange={(e) => setStartPrice(+e.target.value)}
+          />
           s/d
-          <Input type="number" placeholder="end price" onChange={(e) => setEndPrice(+e.target.value)} />
+          <Input
+            className="w-[300px]"
+            type="number"
+            placeholder="end price"
+            onChange={(e) => setEndPrice(+e.target.value)}
+          />
         </div>
         <SelectBrands onChange={(value) => setSelectedBrands(value)} />
         <Button

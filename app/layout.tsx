@@ -16,11 +16,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <body className={clsx(inter.className, 'bg-white')}>
-        <main className="grid grid-flow-col auto-cols-max h-screen max-w-screen overflow-x-hidden">
-          <div className="fixed h-screen hidden md:block">
+        <main className="lg:grid grid-flow-col auto-cols-max h-screen max-w-screen">
+          <div className="fixed h-screen hidden lg:block">
             <Sidebar />
           </div>
-          <div className="md:ml-[300px] w-full  md:w-[calc(100vw-300px)]">{children}</div>
+          <div className="lg:ml-[300px] w-full lg:w-[calc(100vw-300px)]">{children}</div>
         </main>
       </body>
     </html>

@@ -66,7 +66,7 @@ export default function Page() {
 
   return (
     <div className="p-6 space-y-4">
-      <div className="flex items-center justify-between gap-4">
+      <div className="space-y-4 block lg:flex items-center justify-between gap-4">
         <Input
           className="w-[300px]"
           type="text"
