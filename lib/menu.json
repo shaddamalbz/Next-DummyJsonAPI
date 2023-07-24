@@ -1,6 +1,6 @@
 {
   "list": [
-    { "href": "/product", "label": "Products" },
+    { "href": "/products", "label": "Products" },
     { "href": "/carts", "label": "Carts" },
     { "href": "/products-with-dummy", "label": "Products with Dummy" }
   ]
