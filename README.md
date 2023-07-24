@@ -19,13 +19,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
       Category
 - [x] Admin should be able to search products based on Product Name
 - [ ] Applied filters & search need to be autosaved
-- [ ] Admin should be able to view a chart that shows the number of items per Product
+- [x] Admin should be able to view a chart that shows the number of items per Product
 - [x] Admin should be able to view the list of carts that are available in a table form
 - [x] Admin should be able to view the details of a cart in a separate card detail page
 - [x] The source code should be uploaded to Github
 - [x] The application should be deployed to Vercel (share link in the submission document)
 - [x] The application needs to be built using Next.js, Typescript isn’t compulsory but will be a plus point
-- [ ] The site has to be responsive. The layout needs to be adaptive across different devices
+- [x] The site has to be responsive. The layout needs to be adaptive across different devices
 - [x] Should show Pagination in the products & carts table.
 
 ## Issue
