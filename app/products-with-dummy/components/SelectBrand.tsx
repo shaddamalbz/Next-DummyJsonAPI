@@ -98,11 +98,11 @@ const SelectBrands: FC<SelectBrands> = ({ onChange }) => {
   return (
     <Select onValueChange={onChange}>
       <SelectTrigger className="w-[180px]">
-        <SelectValue placeholder="Select a categories" />
+        <SelectValue placeholder="Select a brands" />
       </SelectTrigger>
       <SelectContent>
         <SelectGroup>
-          <SelectLabel>Categories</SelectLabel>
+          <SelectLabel>Brands</SelectLabel>
           {brands.map((item, idx) => (
             <SelectItem value={item} key={idx}>
               {item}
