@@ -2,8 +2,19 @@ import './globals.css'
 import type { Metadata } from 'next'
 import clsx from 'clsx'
 import { Inter } from 'next/font/google'
+import { GiHamburgerMenu } from 'react-icons/gi'
 
 import { Sidebar } from '@/components/ui/sidebar'
+import { Button } from '@/components/ui/button'
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu'
+import menu from '@/lib/menu.json'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +31,30 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <div className="fixed h-screen hidden lg:block">
             <Sidebar />
           </div>
-          <div className="lg:ml-[300px] w-full lg:w-[calc(100vw-300px)]">{children}</div>
+
+          <div className="lg:ml-[300px] w-full lg:w-[calc(100vw-300px)]">
+            <header className="h-20 flex items-center p-6 gap-4">
+              <div className="block lg:hidden">
+                <DropdownMenu>
+                  <DropdownMenuTrigger asChild>
+                    <Button>
+                      <GiHamburgerMenu />
+                    </Button>
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent>
+                    <DropdownMenuLabel>Menu</DropdownMenuLabel>
+                    <DropdownMenuSeparator />
+
+                    <DropdownMenuItem>Products</DropdownMenuItem>
+                    <DropdownMenuItem>Carts</DropdownMenuItem>
+                    <DropdownMenuItem>Product with Dummy</DropdownMenuItem>
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              </div>
+              <h1>Header</h1>
+            </header>
+            {children}
+          </div>
         </main>
       </body>
     </html>
